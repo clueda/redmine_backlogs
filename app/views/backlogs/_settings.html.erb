@@ -245,7 +245,10 @@
                     ['60', '60000'],
                 ], Backlogs.setting[:autorefresh_wait])) %>
 </p>
-
+<p>
+  <%= content_tag(:label, l(:backlogs_pblpage_showcategory)) %>
+  <%= check_box_tag("settings[rb_showcategory_backlog]", 'enabled', Backlogs.setting[:rb_showcategory_backlog]) %>
+</p>
 <p>
   <%= content_tag(:label, l(:label_hide_completed_sprints)) %>
   <%= check_box_tag("settings[disable_closed_sprints_to_master_backlogs]", 'enabled', Backlogs.setting[:disable_closed_sprints_to_master_backlogs]) %>

@@ -48,11 +48,11 @@
 }
 .fff-middle{
   margin-right:100px;
-  margin-left:110px;
+  margin-left:56px;
 }
 .fff-left{
   float: left;
-  width: 110px;
+  width: 56px;
   margin-left: -100%;
 }
 .fff-right{
@@ -399,16 +399,31 @@ ul li { vertical-align: bottom; } /* close IE7 gap between list items */
   white-space: nowrap;
   overflow: hidden;
 }
-#backlogs_container .stories .story .project .t {
+
+#backlogs_container .stories .story .project .t, #backlogs_container .stories .story .category .t {
   overflow:hidden;
 }
-#backlogs_container .stories .story .project .v {
+#backlogs_container .stories .story .project .v, #backlogs_container .stories .story .category .v {
   display:none;
 }
+
 #backlogs_container .stories .story.editing .project,
-#backlogs_container .stories .story.editing select.project_id.editor {
+#backlogs_container .stories .story.editing select.project_id.editor,
+#backlogs_container .stories .story.editing .category,
+#backlogs_container .stories .story.editing select.category_id.editor {
   display:none;
 }
+
+#backlogs_container .stories .story .category {
+  display:block;
+  position:relative;
+  float:left;
+  width:70px;
+  padding-left:2px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 
 #backlogs_container .stories .story .subject {
   overflow:hidden;
@@ -707,3 +722,34 @@ ul li { vertical-align: bottom; } /* close IE7 gap between list items */
   height: auto;
   overflow: show;
 }
+
+/* category button styles */
+
+
+
+.btn{
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid #cccccc;
+  border-bottom-color: #b3b3b3;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  padding: 0 2px;
+  font-size: 10.5px;
+  line-height: 1.45em;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #006dcc;
+  background-repeat: repeat-x;
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+
+

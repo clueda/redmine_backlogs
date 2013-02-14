@@ -81,6 +81,7 @@ en:
   field_time_entry_spend_on: Time Entry Spend on
   field_time_entry_comments: Time Entry Comments
   field_project_id: Project Id
+  field_category_id: Category Id
   label_back_to_project: Back to project page
   label_backlogs: Backlogs
   label_backlogs_unconfigured: You have not configured Backlogs yet. Please go to %{administration} > %{plugins}, then click on the %{configure} link for this plugin. Once you have set the fields, come back to this page to start using the tool.
@@ -208,6 +209,7 @@ en:
   backlogs_sprint_card_settings: Card printing
   backlogs_burndown_settings: Burndown settings
   backlogs_pblpage_settings: Product backlog page settings
+  backlogs_pblpage_showcategory: Show category in backlog
   backlogs_story_settings: Story and Task settings
   label_filter_tasks: Filter by user
   label_filter_tasks_my_tasks: Filter by user - my tasks
