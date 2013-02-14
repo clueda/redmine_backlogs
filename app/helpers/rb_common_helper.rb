@@ -6,6 +6,27 @@ module RbCommonHelper
 
   include CustomFieldsHelper
 
+  def generate_color_from_category_id(catid)
+    colors = [
+      "#00d8d8",
+      "#000000",
+      "#0000FF",
+      "#FF00FF",
+      "#808080",
+      "#008000",
+      "#00da00",
+      "#800000",
+      "#000080",
+      "#808000",
+      "#800080",
+      "#FF0000",
+      "#b2b2b2",
+      "#008080",
+      "#ba4fff",
+      "#cacb00"
+    ]
+    colors[(catid.to_i % 16)]
+  end
   
   def assignee_id_or_empty(story)
     story.new_record? ? "" : story.assigned_to_id
@@ -193,6 +214,23 @@ filter:progid:DXImageTransform.Microsoft.Gradient(Enabled=1,GradientType=0,Start
                              :conditions => ["enabled_modules.name = 'backlogs' and status = ?", Project::STATUS_ACTIVE],
                              :include => :project,
                              :joins => :project).collect { |mod| mod.project}
+  end
+
+  # Renders the project quick-jump box
+  def render_backlog_project_jump_box
+    projects = RbCommonHelper.find_backlogs_enabled_active_projects
+    projects = Member.find(:all, :conditions => ["user_id = ? and project_id IN (?)", User.current.id, projects.collect(&:id)]).collect{ |m| m.project}
+
+    if projects.any?
+      s = '<select onchange="if (this.value != \'\') { window.location = this.value; }">' +
+            "<option value=''>#{ l(:label_jump_to_a_project) }</option>" +
+            '<option value="" disabled="disabled">---</option>'
+      s << project_tree_options_for_select(projects, :selected => @project) do |p|
+        { :value => url_for(:controller => 'rb_master_backlogs', :action => 'show', :project_id => p, :jump => current_menu_item) }
+      end
+      s << '</select>'
+      s.html_safe
+    end
   end
 
   # Returns a collection of users allowed to log time for the current project. (see app/views/rb_taskboards/show.html.erb for usage)
