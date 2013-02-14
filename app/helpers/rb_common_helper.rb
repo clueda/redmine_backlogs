@@ -6,6 +6,7 @@ module RbCommonHelper
 
   include CustomFieldsHelper
 
+  
   def assignee_id_or_empty(story)
     story.new_record? ? "" : story.assigned_to_id
   end
