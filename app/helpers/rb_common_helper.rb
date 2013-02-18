@@ -1,5 +1,7 @@
 require 'color'
 require 'nokogiri'
+require 'zlib'
+
 
 module RbCommonHelper
   unloadable
@@ -8,7 +10,7 @@ module RbCommonHelper
 
 
   def generate_color_from_category(category)
-    "#" + category.to_s.hash.abs.to_s(16)[0..5]
+    "#" + Zlib.crc32(category.to_s).abs.to_s(16)[0..5]
   end
   
   def assignee_id_or_empty(story)
