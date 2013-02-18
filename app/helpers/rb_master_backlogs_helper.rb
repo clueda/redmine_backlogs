@@ -2,6 +2,7 @@ module RbMasterBacklogsHelper
   unloadable
   include Redmine::I18n
 
+
   def backlog_html_class(backlog)
     is_sprint?(backlog) ? "sprint backlog" : "product backlog"
   end
