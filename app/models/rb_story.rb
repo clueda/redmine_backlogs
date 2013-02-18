@@ -172,6 +172,30 @@ class RbStory < Issue
     end
   end
 
+  def self.epic_trackers(options = {})
+    # legacy
+    options = {:type => options} if options.is_a?(Symbol)
+
+    # somewhere early in the initialization process during first-time migration this gets called when the table doesn't yet exist
+    trackers = []
+    if has_settings_table
+      trackers = Backlogs.setting[:epic_trackers]
+      trackers = [] if trackers.blank?
+    end
+
+    trackers = Tracker.find_all_by_id(trackers)
+    trackers = trackers & options[:project].trackers if options[:project]
+    trackers = trackers.sort_by { |t| [t.position] }
+
+    case options[:type]
+      when :trackers      then return trackers
+        when :array, nil  then return trackers.collect{|t| t.id}
+        when :string      then return trackers.collect{|t| t.id.to_s}.join(',')
+        else                   raise "Unexpected return type #{options[:type].inspect}"
+    end
+  end
+
+
   def self.has_settings_table
     ActiveRecord::Base.connection.tables.include?('settings')
   end

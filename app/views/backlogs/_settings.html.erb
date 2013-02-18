@@ -74,6 +74,7 @@
 <p>
   <%= content_tag(:label, l(:backlogs_story_tracker)) %>
   <%= select_tag("settings[story_trackers]", options_from_collection_for_select(Tracker.all, :id, :name, RbStory.trackers), :multiple => true) %>
+
   <table>
     <thead>
       <tr>
@@ -97,6 +98,11 @@
       <% end %>
     </tbody>
   </table>
+</p>
+
+<p>
+  <%= content_tag(:label, l(:backlogs_epic_tracker)) %>
+  <%= select_tag("settings[epic_trackers]", options_from_collection_for_select(Tracker.all, :id, :name, RbStory.epic_trackers), :multiple => true) %>
 </p>
 
 <p>
