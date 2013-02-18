@@ -741,7 +741,7 @@ ul li { vertical-align: bottom; } /* close IE7 gap between list items */
   -moz-border-radius: 3px;
   border-radius: 3px;
   color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  text-shadow: rgba(0, 0, 0, 1) 0px 0px 3px;
   background-color: #006dcc;
   background-repeat: repeat-x;
   border-color: #0044cc #0044cc #002a80;
