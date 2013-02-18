@@ -52,9 +52,16 @@
     <% unless User.current.allowed_to?(:update_sprints, @project) %>
       #backlogs_container .header .model.headertext{cursor:default;}
     <% end %>
-    <% if Backlogs.setting[:show_project_name] != 'enabled' %>
-      .fff-middle{ margin-left:56px; } /*this should be dynamic*/
-      .fff-left{ width: 56px; }
+    <% if (Backlogs.setting[:show_project_name] == 'enabled') and (Backlogs.setting[:rb_showcategory_backlog] != 'enabled') %>
+      .fff-middle{ margin-left:110px; }
+      .fff-left{ width: 110px; }
+    <% elsif (Backlogs.setting[:show_project_name] != 'enabled') and (Backlogs.setting[:rb_showcategory_backlog] == 'enabled') %>
+      .fff-middle{ margin-left:135px; }
+      .fff-left{ width: 135px; }
+    <% end %>    
+    <% if Backlogs.setting[:show_project_name] == 'enabled' and Backlogs.setting[:rb_showcategory_backlog] == 'enabled' %>
+      .fff-middle{ margin-left:187px; }
+      .fff-left{ width: 187px; }
     <% end %>
   </style>
 <%- end %>

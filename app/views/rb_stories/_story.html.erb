@@ -18,6 +18,14 @@
   </div>
   <% end %>
 
+  <% if Backlogs.setting[:rb_showcategory_backlog] == 'enabled' and story.category_id != nil %>
+    <div class="category editable story_tooltip story_field" fieldtype="select" fieldname="category_id" fieldlabel="<%=l(:field_category_id)%>">
+      <div class="tooltip_text"><%= story.category %></div>
+      <div class="t btn btn-primary btn-mini" style="background-color: <%= generate_color_from_category_id(story.category_id) %>"><%= story.category %></div>
+      <div class="v"><%= story.category_id %></div>
+    </div>
+  <% end %>
+
   <div class="tracker_id editable story_field" fieldtype="select" fieldname="tracker_id" fieldlabel="<%=l(:field_tracker_id)%>">
     <div class="t"><%= h tracker_name_or_empty(story) %></div>
     <div class="v"><%= tracker_id_or_empty(story) %></div>
