@@ -6,26 +6,9 @@ module RbCommonHelper
 
   include CustomFieldsHelper
 
-  def generate_color_from_category_id(catid)
-    colors = [
-      "#00d8d8",
-      "#000000",
-      "#0000FF",
-      "#FF00FF",
-      "#808080",
-      "#008000",
-      "#00da00",
-      "#800000",
-      "#000080",
-      "#808000",
-      "#800080",
-      "#FF0000",
-      "#b2b2b2",
-      "#008080",
-      "#ba4fff",
-      "#cacb00"
-    ]
-    colors[(catid.to_i % 16)]
+
+  def generate_color_from_category(category)
+    "#" + category.to_s.hash.abs.to_s(16)[0..5]
   end
   
   def assignee_id_or_empty(story)
